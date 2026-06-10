@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clínica Dental Gonzalez</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    /* ── VARIABLES ─────────────────── */
+    :root {
+      --negro:   #0f0d0b;
+      --oscuro:  #1c1612;
+      --cafe:    #3b2a1a;
+      --cafe2:   #5c3d1e;
+      --dorado:  #c8922a;
+      --dorado2: #e8b84b;
+      --crema:   #f5ede0;
+      --texto:   #d4c4a8;
+      --gris:    #8a7a68;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--negro);
+      color: var(--texto);
+      font-family: 'Lato', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.015'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── NAVBAR ────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      background: rgba(15,13,11,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(200,146,42,0.2);
+      z-index: 999;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 30px;
+      display: flex;
+      align-items: center;
+      height: 64px;
+      gap: 8px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 10px;
+      text-decoration: none;
+      margin-right: auto;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado2));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      color: var(--crema);
+      font-weight: 700;
+      line-height: 1.1;
+    }
+    .nav-logo-sub {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--dorado);
+      text-transform: uppercase;
+    }
+    nav a:not(.nav-logo) {
+      color: var(--gris);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 14px;
+      border-radius: 3px;
+    }
+    .nav-cita {
+      background: var(--dorado) !important;
+      color: var(--negro) !important;
+      font-weight: 700 !important;
+      padding: 8px 18px !important;
+      border-radius: 3px !important;
+      margin-left: 8px;
+    }
+
+    /* ── SECCIONES GENERALES ───────── */
+    section { padding: 80px 30px; position: relative; z-index: 1; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+
+    .section-tag {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--dorado);
+      margin-bottom: 10px;
+      display: block;
+    }
+    .linea {
+      width: 50px; height: 2px;
+      background: linear-gradient(90deg, var(--dorado), transparent);
+      margin-bottom: 16px;
+    }
+    .section-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: var(--crema);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .section-desc {
+      font-size: 15px;
+      color: var(--gris);
+      max-width: 520px;
+      line-height: 1.8;
+      margin-bottom: 50px;
+    }
+
+    /* ── HERO / INICIO ─────────────── */
+    #inicio {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 30px 80px;
+      background:
+        radial-gradient(ellipse 100% 80% at 50% 0%, rgba(59,42,26,0.6) 0%, transparent 70%),
+        var(--negro);
+    }
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid var(--dorado);
+      color: var(--dorado);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    #inicio h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 7vw, 80px);
+      font-weight: 900;
+      color: var(--crema);
+      line-height: 1.05;
+      border: none;
+      margin-bottom: 10px;
+    }
+    #inicio h2 span { color: var(--dorado); font-style: italic; }
+    #inicio p {
+      font-size: 16px;
+      color: var(--gris);
+      max-width: 500px;
+      margin: 20px auto 40px;
+      line-height: 1.8;
+    }
+
+    /* ── SERVICIOS ─────────────────── */
+    #servicios { background: var(--oscuro); }
+
+    .servicios-lista {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+    }
+    .serv-item {
+      background: var(--cafe);
+      border: 1px solid rgba(200,146,42,0.12);
+      border-radius: 4px;
+      padding: 22px 20px;
+      font-size: 14px;
+      color: var(--texto);
+      position: relative;
+      overflow: hidden;
+    }
+    .serv-item span { font-size: 22px; display: block; margin-bottom: 8px; }
+    .serv-item strong {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      color: var(--crema);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ── PERSONAL ──────────────────── */
+    #personal { background: var(--negro); }
+
+    .equipo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 18px;
+    }
+    .card-doctor {
+      background: var(--cafe);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 4px;
+      padding: 24px 18px;
+      text-align: center;
+    }
+    .doc-avatar {
+      width: 64px; height: 64px;
+      background: linear-gradient(135deg, var(--cafe2), var(--dorado));
+      border-radius: 50%;
+      margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px;
+    }
+    .doc-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--crema);
+      margin-bottom: 4px;
+    }
+    .doc-esp {
+      font-size: 11px;
+      color: var(--dorado);
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    .doc-serv {
+      font-size: 10px;
+      color: var(--gris);
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .doc-info {
+      font-size: 11px;
+      color: var(--gris);
+      line-height: 1.7;
+    }
+
+    /* ── COSTOS ────────────────────── */
+    #costos { background: var(--oscuro); }
+
+    .tabla-wrap {
+      overflow-x: auto;
+      border-radius: 4px;
+      border: 1px solid rgba(200,146,42,0.15);
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    thead tr { background: var(--cafe2); }
+    thead th {
+      padding: 13px 16px;
+      text-align: left;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 700;
+    }
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      background: var(--cafe);
+    }
+    tbody td { padding: 12px 16px; color: var(--texto); }
+    tbody td:first-child { color: var(--dorado2); font-weight: 700; }
+
+    /* ── AGENDAR CITA ──────────────── */
+    #agendar {
+      background: var(--cafe);
+      border-top: 1px solid rgba(200,146,42,0.2);
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .campo { display: flex; flex-direction: column; gap: 6px; }
+    .campo.full { grid-column: 1 / -1; }
+    label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--dorado);
+      font-weight: 700;
+    }
+    input[type="text"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(200,146,42,0.2);
+      border-radius: 3px;
+      padding: 10px 14px;
+      color: var(--crema);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--dorado);
+    }
+    select option { background: var(--cafe); color: var(--crema); }
+    textarea { resize: vertical; }
+    .btn-enviar {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, var(--dorado), var(--dorado2));
+      color: var(--negro);
+      border: none;
+      padding: 14px 30px;
+      font-family: 'Lato', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-top: 6px;
+    }
+
+    /* ── FOOTER ────────────────────── */
+    footer {
+      background: var(--negro);
+      border-top: 1px solid rgba(200,146,42,0.15);
+      padding: 48px 30px 28px;
+    }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+
+    .alumno-card {
+      background: rgba(200,146,42,0.06);
+      border: 1px solid rgba(200,146,42,0.25);
+      border-radius: 4px;
+      padding: 28px 32px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+    .alumno-card::before {
+      content: '🎓';
+      position: absolute;
+      right: 24px; top: 20px;
+      font-size: 48px;
+      opacity: 0.08;
+    }
+    .alumno-tag {
+      font-size: 9px; letter-spacing: 4px;
+      text-transform: uppercase; color: var(--dorado);
+      margin-bottom: 14px; display: block;
+    }
+    .alumno-nombre {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--crema); margin-bottom: 18px;
+    }
+    .alumno-datos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .dato-field { display: flex; flex-direction: column; gap: 3px; }
+    .dato-lbl { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.25); }
+    .dato-val { font-size: 13px; color: var(--crema); }
+    .dato-val.dorado { color: var(--dorado2); font-weight: 700; }
+    .footer-copy {
+      text-align: center;
+      font-size: 11px;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 1px;
+    }
+
+    /* ── RESPONSIVE ────────────────── */
+    @media (max-width: 768px) {
+      .nav-inner { padding: 0 16px; }
+      nav a:not(.nav-logo):not(.nav-cita) { display: none; }
+      section { padding: 56px 16px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .alumno-datos { grid-template-columns: 1fr; }
+      .equipo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ══════════════════════════════════════════
+       ADICIONES — SECCIONES BASE DE DATOS
+       ══════════════════════════════════════════ */
+
+    .nav-sep {
+      display: inline-block;
+      width: 1px; height: 18px;
+      background: rgba(200,146,42,0.22);
+      margin: 0 4px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .nav-db {
+      font-size: 10px !important;
+      padding: 7px 8px !important;
+      letter-spacing: 1px !important;
+      color: rgba(200,146,42,0.65) !important;
+    }
+    .nav-db:hover { color: var(--dorado2) !important; }
+
+    #db-pacientes   { background: var(--negro);  border-top: 1px solid rgba(200,146,42,0.08); }
+    #db-empleados   { background: var(--oscuro); }
+    #db-pagos       { background: var(--negro);  border-top: 1px solid rgba(200,146,42,0.08); }
+    #db-citas       { background: var(--oscuro); }
+    #db-tratamiento { background: var(--negro);  border-top: 1px solid rgba(200,146,42,0.08); }
+    #db-historial   { background: var(--oscuro); }
+    #visualizador   { background: var(--cafe);   border-top: 1px solid rgba(200,146,42,0.2);  }
+
+    input[type="number"] {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(200,146,42,0.2);
+      border-radius: 3px;
+      padding: 10px 14px;
+      color: var(--crema);
+      font-family: 'Lato', sans-serif;
+      font-size: 14px;
+      width: 100%;
+      outline: none;
+    }
+    input[type="number"]:focus { border-color: var(--dorado); }
+
+    .db-seccion, .db-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 6px;
+    }
+
+    .form-panel {
+      background: var(--cafe);
+      border: 1px solid rgba(200,146,42,0.18);
+      border-radius: 4px;
+      padding: 22px 20px;
+    }
+    .view-panel {
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(200,146,42,0.1);
+      border-radius: 4px;
+      padding: 22px 20px;
+    }
+    .form-panel h3, .view-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--crema);
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(200,146,42,0.15);
+    }
+
+    /* ── BOTONES DB ─────────────────── */
+    .btn {
+      width: 100%;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado2));
+      color: var(--negro);
+    }
+    .btn-primary:hover { opacity: 0.85; }
+    .btn-view {
+      background: transparent;
+      border: 1px solid rgba(200,146,42,0.35);
+      color: var(--dorado);
+      width: 100%;
+      padding: 10px 18px;
+      border-radius: 3px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .btn-view:hover { background: rgba(200,146,42,0.08); }
+
+    #visualizador button:not(.btn) {
+      background: linear-gradient(135deg, var(--dorado), var(--dorado2));
+      color: var(--negro);
+      border: none;
+      padding: 12px 28px;
+      font-family: 'Lato', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 3px;
+      margin-top: 8px;
+      transition: opacity 0.2s;
+    }
+    #visualizador button:not(.btn):hover { opacity: 0.85; }
+
+    .doc-list {
+      max-height: 340px;
+      overflow-y: auto;
+      margin-top: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(200,146,42,0.4) transparent;
+    }
+    .doc-card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(200,146,42,0.1);
+      border-left: 3px solid var(--dorado);
+      border-radius: 3px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      font-size: 12px;
+      color: var(--texto);
+      line-height: 1.8;
+    }
+    .doc-key { color: var(--dorado); font-weight: 700; font-size: 11px; letter-spacing: 0.5px; }
+    .doc-val { color: var(--crema); }
+
+    .msg {
+      padding: 10px 14px;
+      border-radius: 3px;
+      margin-bottom: 12px;
+      display: none;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .msg.ok  { background: rgba(21,87,36,0.2);  color: #86d9a0; border: 1px solid rgba(86,187,118,0.3); }
+    .msg.err { background: rgba(114,28,36,0.2); color: #f5a5a5; border: 1px solid rgba(200,80,80,0.3);  }
+
+    .spinner {
+      display: inline-block;
+      width: 12px; height: 12px;
+      border: 2px solid rgba(200,146,42,0.15);
+      border-top-color: var(--dorado);
+      border-radius: 50%;
+      animation: db-spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+    @keyframes db-spin { to { transform: rotate(360deg); } }
+
+    #resultado-visualizador { margin-top: 20px; overflow-x: auto; }
+    #resultado-visualizador table {
+      width: 100%; border-collapse: collapse;
+      font-size: 13px; border-radius: 4px; overflow: hidden;
+    }
+    #resultado-visualizador th {
+      background: var(--cafe2);
+      padding: 12px 16px; text-align: left;
+      font-size: 10px; letter-spacing: 2px;
+      text-transform: uppercase; color: var(--dorado); font-weight: 700;
+    }
+    #resultado-visualizador td {
+      padding: 10px 16px; color: var(--texto);
+      background: var(--cafe);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    #resultado-visualizador p {
+      color: var(--gris); font-size: 13px; margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .db-seccion, .db-section { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav>
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">
+      <div class="nav-logo-icon">🦷</div>
+      <div>
+        <div class="nav-logo-text">Sonrisa Perfecta</div>
+        <div class="nav-logo-sub">Clínica Dental</div>
+      </div>
+    </a>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#personal">Personal</a>
+    <a href="#costos">Costos</a>
+    <a href="#agendar" class="nav-cita">Agendar Cita</a>
+    <span class="nav-sep"></span>
+    <a href="#db-pacientes" class="nav-db">Pacientes</a>
+    <a href="#db-empleados" class="nav-db">Empleados</a>
+    <a href="#db-pagos" class="nav-db">Pagos</a>
+    <a href="#db-citas" class="nav-db">Citas</a>
+    <a href="#db-tratamiento" class="nav-db">Tratamientos</a>
+    <a href="#db-historial" class="nav-db">Historial</a>
+  </div>
+</nav>
+
+<!-- INICIO -->
+<section id="inicio">
+  <div>
+    <div class="hero-badge">Clínica Dental Gonzalez · CBTIS 128 · Atención Profesional</div>
+    <h2>Tu sonrisa es<br/><span>nuestra pasión</span></h2>
+    <p>En la Clinica Dental Gonzalez tenemos atención dental profesional para toda la familia con tecnología de punta y los mejores especialistas.</p>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="section-inner">
+    <span class="section-tag">Lo que ofrecemos</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">Nuestros Servicios</h2>
+    <p class="section-desc">Tratamientos dentales con atención personalizada y precios accesibles.</p>
+    <div class="servicios-lista">
+      <div class="serv-item"><span>🔍</span><strong>Consulta general</strong>Diagnóstico y revisión inicial</div>
+      <div class="serv-item"><span>🩻</span><strong>Radiografía Periapical</strong>Imagen detallada de raíces y hueso</div>
+      <div class="serv-item"><span>✨</span><strong>Limpieza dental</strong>Profilaxis y eliminación de sarro</div>
+      <div class="serv-item"><span>🔊</span><strong>Ultrasonido Dental</strong>Limpieza profunda con ultrasonido</div>
+      <div class="serv-item"><span>🌟</span><strong>Blanqueamiento dental</strong>Sonrisa brillante y natural</div>
+      <div class="serv-item"><span>🦷</span><strong>Extracción simple</strong>Procedimiento rápido y seguro</div>
+      <div class="serv-item"><span>📐</span><strong>Examen de Oclusión</strong>Evaluación de mordida y alineación</div>
+      <div class="serv-item"><span>🧲</span><strong>Resonancia Mandibular</strong>Diagnóstico por imagen de la mandíbula</div>
+      <div class="serv-item"><span>😁</span><strong>Ortodoncia</strong>Alineación con brackets</div>
+      <div class="serv-item"><span>⚕️</span><strong>Cirugía de Cordales</strong>Extracción de muelas del juicio</div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL -->
+<section id="personal">
+  <div class="section-inner">
+    <span class="section-tag">Profesionales certificados</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">Personal</h2>
+    <p class="section-desc">5 especialistas listos para cuidar tu salud dental.</p>
+    <div class="equipo-grid">
+      <div class="card-doctor">
+        <div class="doc-avatar">👨‍⚕️</div>
+        <div class="doc-nombre">Armando Luna</div>
+        <div class="doc-esp">Consulta general · Limpieza dental</div>
+        <div class="doc-info">📞 555-019-2837<br/>🏢 Consultorio 1<br/>🕐 09:15–13:15 · L–V</div>
+      </div>
+      <div class="card-doctor">
+        <div class="doc-avatar">👩‍⚕️</div>
+        <div class="doc-nombre">Patricia Solís</div>
+        <div class="doc-esp">Radiografía Periapical · Ultrasonido Dental</div>
+        <div class="doc-info">📞 555-012-4455<br/>🏢 Consultorio 2<br/>🕐 09:15–13:15 · V–D</div>
+      </div>
+      <div class="card-doctor">
+        <div class="doc-avatar">👨‍⚕️</div>
+        <div class="doc-nombre">Javier Ortega</div>
+        <div class="doc-esp">Blanqueamiento dental · Extracción simple</div>
+        <div class="doc-info">📞 555-015-6789<br/>🏢 Consultorio 3<br/>🕐 21:00–06:00 · L–D</div>
+      </div>
+      <div class="card-doctor">
+        <div class="doc-avatar">👩‍⚕️</div>
+        <div class="doc-nombre">Patricia Rivas</div>
+        <div class="doc-esp">Examen de Oclusión · Ortodoncia</div>
+        <div class="doc-info">📞 555-618-3321<br/>🏢 Consultorio 4<br/>🕐 13:00–19:00 · L–V</div>
+      </div>
+      <div class="card-doctor">
+        <div class="doc-avatar">👨‍⚕️</div>
+        <div class="doc-nombre">Adolfo Becerra</div>
+        <div class="doc-esp">Resonancia Mandibular · Cirugía de Cordales</div>
+        <div class="doc-info">📞 555-611-4400<br/>🏢 Consultorio 5<br/>🕐 13:00–21:00 · V–D</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COSTOS -->
+<section id="costos">
+  <div class="section-inner">
+    <span class="section-tag">Transparencia en precios</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">Lista de Precios</h2>
+    <p class="section-desc">Tarifas claras sin costos ocultos.</p>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr><th>Servicio</th><th>Costo</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Consulta General</td><td>$300 MXN</td></tr>
+          <tr><td>Radiografía Periapical</td><td>$800 MXN</td></tr>
+          <tr><td>Limpieza Dental</td><td>$400 MXN</td></tr>
+          <tr><td>Ultrasonido Dental</td><td>$1,300 MXN</td></tr>
+          <tr><td>Blanqueamiento</td><td>$900 MXN</td></tr>
+          <tr><td>Extracción Simple</td><td>$1,600 MXN</td></tr>
+          <tr><td>Examen de Oclusión</td><td>$1,200 MXN</td></tr>
+          <tr><td>Resonancia Mandibular</td><td>$5,000 MXN</td></tr>
+          <tr><td>Ortodoncia (Evaluación)</td><td>$700 MXN</td></tr>
+          <tr><td>Cirugía de Cordales</td><td>$3,000 MXN</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDAR CITA -->
+<section id="agendar">
+  <div class="section-inner">
+    <span class="section-tag">Estamos para ti</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">Solicita tu Cita Aquí</h2>
+    <p class="section-desc">Agenda tu consulta hoy mismo. Nuestro equipo te atenderá a la brevedad.</p>
+
+    <!-- onsubmit previene recarga de página -->
+    <form class="form-grid" onsubmit="event.preventDefault(); enviarCita(this)">
+      <div id="msg-cita-form" class="msg campo full"></div>
+
+      <div class="campo">
+        <label>Nombre del Paciente</label>
+        <input type="text" name="nombre" placeholder="Nombre completo" required>
+      </div>
+      <div class="campo">
+        <label>Teléfono de contacto</label>
+        <input type="tel" name="telefono" placeholder="Ej: 656-123-4567" required>
+      </div>
+      <div class="campo">
+        <label>Seleccione el Servicio</label>
+        <select name="servicio">
+          <option value="consulta">Consulta General</option>
+          <option value="radiografia">Radiografía Periapical</option>
+          <option value="limpieza">Limpieza Dental / Profilaxis</option>
+          <option value="ultrasonido">Ultrasonido Dental</option>
+          <option value="blanqueamiento">Blanqueamiento Dental</option>
+          <option value="extraccion">Extracción Simple</option>
+          <option value="oclusion">Examen de Oclusión</option>
+          <option value="resonancia">Resonancia Mandibular</option>
+          <option value="ortodoncia">Ortodoncia</option>
+          <option value="cordales">Cirugía de Cordales</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Fecha deseada</label>
+        <input type="date" name="fecha" required>
+      </div>
+      <div class="campo full">
+        <label>Motivo de la consulta</label>
+        <textarea name="motivo" rows="3" placeholder="Escribe tus síntomas aquí..."></textarea>
+      </div>
+      <button type="submit" class="btn-enviar">Enviar Solicitud</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- DB — PACIENTES -->
+<section id="db-pacientes">
+  <div class="section-inner">
+    <span class="section-tag">Registro de Pacientes</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">🧑‍💼 Colección: Pacientes</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nuevo Paciente</h3>
+        <div id="msg-pacientes" class="msg"></div>
+        <div class="campo"><label>ID Paciente</label><input type="text" id="pac-id" placeholder="Pac-001"/></div>
+        <div class="campo"><label>Nombre</label><input type="text" id="pac-nombre" placeholder="Nombre"/></div>
+        <div class="campo"><label>Apellido</label><input type="text" id="pac-apellido" placeholder="Apellido"/></div>
+        <div class="campo"><label>Alergias</label><input type="text" id="pac-alergias" placeholder="penicilina / Ninguna"/></div>
+        <div class="campo"><label>Teléfono</label><input type="tel" id="pac-tel" placeholder="656-0000"/></div>
+        <div class="campo"><label>Dirección</label><input type="text" id="pac-dir" placeholder="Av. Principal"/></div>
+        <button class="btn btn-primary" onclick="insertar('pacientes', datosPaciente)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('pacientes','lista-pacientes')">Cargar documentos</button>
+        <div id="lista-pacientes" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DB — EMPLEADOS -->
+<section id="db-empleados">
+  <div class="section-inner">
+    <span class="section-tag">Registro de Empleados</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">👩‍⚕️ Colección: Empleados</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nuevo Empleado</h3>
+        <div id="msg-empleados" class="msg"></div>
+        <div class="campo"><label>Nombre</label><input type="text" id="emp-nombre" placeholder="Nombre"/></div>
+        <div class="campo"><label>Apellido</label><input type="text" id="emp-apellido" placeholder="Apellido"/></div>
+        <div class="campo"><label>Número Tel</label><input type="tel" id="emp-tel" placeholder="656-0000"/></div>
+        <div class="campo"><label>Dirección</label><input type="text" id="emp-dir" placeholder="Calle y número"/></div>
+        <div class="campo"><label>RFC</label><input type="text" id="emp-rfc" placeholder="RFC del empleado"/></div>
+        <div class="campo">
+          <label>Nivel Educativo</label>
+          <select id="emp-nivel">
+            <option>Basica</option>
+            <option>Media</option>
+            <option>Media superior</option>
+            <option>Superior</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="insertar('empleados', datosEmpleado)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('empleados','lista-empleados')">Cargar documentos</button>
+        <div id="lista-empleados" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DB — PAGOS -->
+<section id="db-pagos">
+  <div class="section-inner">
+    <span class="section-tag">Control de Pagos</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">💳 Colección: Pagos</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nuevo Pago</h3>
+        <div id="msg-pagos" class="msg"></div>
+        <div class="campo"><label>Folio de Pago</label><input type="number" id="pago-folio" placeholder="102"/></div>
+        <div class="campo"><label>ID Paciente</label><input type="text" id="pago-idpac" placeholder="Pac-002"/></div>
+        <div class="campo"><label>Fecha de Pago</label><input type="date" id="pago-fecha"/></div>
+        <div class="campo">
+          <label>Estado del Pago</label>
+          <select id="pago-estado">
+            <option>Completado</option>
+            <option>Pendiente</option>
+            <option>Cancelado</option>
+          </select>
+        </div>
+        <div class="campo"><label>Nombre del Cliente</label><input type="text" id="pago-cliente" placeholder="Nombre-Apellido"/></div>
+        <button class="btn btn-primary" onclick="insertar('pagos', datosPago)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('pagos','lista-pagos')">Cargar documentos</button>
+        <div id="lista-pagos" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DB — CITAS -->
+<section id="db-citas">
+  <div class="section-inner">
+    <span class="section-tag">Control de Citas</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">🗓️ Colección: Citas</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nueva Cita</h3>
+        <div id="msg-citas" class="msg"></div>
+        <div class="campo"><label>ID Cita</label><input type="text" id="cit-id" placeholder="cit-105"/></div>
+        <div class="campo"><label>ID Paciente</label><input type="text" id="cit-pac" placeholder="Pac-005"/></div>
+        <div class="campo"><label>ID Dentista</label><input type="text" id="cit-doc" placeholder="Doc-01"/></div>
+        <div class="campo">
+          <label>Tipo de Cita</label>
+          <select id="cit-tipo">
+            <option>Primera vez</option>
+            <option>Seguimiento</option>
+            <option>Urgencia</option>
+          </select>
+        </div>
+        <button class="btn btn-primary" onclick="insertar('citas', datosCita)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('citas','lista-citas')">Cargar documentos</button>
+        <div id="lista-citas" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DB — TRATAMIENTO -->
+<section id="db-tratamiento">
+  <div class="section-inner">
+    <span class="section-tag">Registro Clínico</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">🩺 Colección: Tratamientos</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nuevo Tratamiento</h3>
+        <div id="msg-tratamiento" class="msg"></div>
+        <div class="campo"><label>ID Tratamiento</label><input type="text" id="trat-id" placeholder="Trat-03"/></div>
+        <div class="campo"><label>Servicio</label><input type="text" id="trat-serv" placeholder="Ej: Limpieza dental"/></div>
+        <div class="campo"><label>Descripción</label><textarea rows="2" id="trat-desc" placeholder="Descripción del procedimiento"></textarea></div>
+        <div class="campo"><label>ID Paciente</label><input type="text" id="trat-pac" placeholder="006"/></div>
+        <button class="btn btn-primary" onclick="insertar('tratamiento', datosTratamiento)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('tratamiento','lista-tratamiento')">Cargar documentos</button>
+        <div id="lista-tratamiento" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DB — HISTORIAL CLÍNICO -->
+<section id="db-historial">
+  <div class="section-inner">
+    <span class="section-tag">Registro Clínico</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">📂 Colección: Historial Clínico</h2>
+    <div class="db-seccion">
+      <div class="form-panel">
+        <h3>➕ Nuevo Historial</h3>
+        <div id="msg-historial_clinico" class="msg"></div>
+        <div class="campo"><label>ID Historia</label><input type="text" id="his-id" placeholder="His-6"/></div>
+        <div class="campo"><label>ID Paciente</label><input type="text" id="his-pac" placeholder="101"/></div>
+        <div class="campo"><label>Diagnóstico</label><input type="text" id="his-diag" placeholder="Ej: Endodoncia"/></div>
+        <div class="campo"><label>Observaciones</label><textarea rows="2" id="his-obs" placeholder="Notas del dentista…"></textarea></div>
+        <button class="btn btn-primary" onclick="insertar('historial_clinico', datosHistorial)">Guardar en MongoDB</button>
+      </div>
+      <div class="view-panel">
+        <h3>📄 Documentos registrados</h3>
+        <button class="btn-view" onclick="verDocumentos('historial_clinico','lista-historial')">Cargar documentos</button>
+        <div id="lista-historial" class="doc-list"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUALIZADOR GENERAL -->
+<section id="visualizador">
+  <div class="section-inner">
+    <span class="section-tag">Consulta General</span>
+    <div class="linea"></div>
+    <h2 class="section-titulo">Ver Registros de la Base de Datos</h2>
+    <p class="section-desc">Selecciona una colección para consultar todos sus documentos almacenados.</p>
+    <div class="campo" style="max-width:320px; margin-bottom:16px;">
+      <label>Selecciona una colección:</label>
+      <select id="col-selector">
+        <option value="pacientes">Pacientes</option>
+        <option value="empleados">Empleados</option>
+        <option value="pagos">Pagos</option>
+        <option value="citas">Citas</option>
+        <option value="tratamiento">Tratamiento</option>
+        <option value="historial_clinico">Historial Clínico</option>
+      </select>
+    </div>
+    <button onclick="cargarColeccion()">Ver Registros</button>
+    <div id="resultado-visualizador"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="alumno-card">
+      <span class="alumno-tag">Desarrollado por · Estudiante</span>
+      <div class="alumno-nombre">Gonzalez Ginez Andres Gael</div>
+      <div class="alumno-datos">
+        <div class="dato-field">
+          <span class="dato-lbl">No. de Control</span>
+          <span class="dato-val dorado">24308051280847</span>
+        </div>
+        <div class="dato-field">
+          <span class="dato-lbl">Semestre · Grupo</span>
+          <span class="dato-val">4° Semestre · Grupo J</span>
+        </div>
+        <div class="dato-field">
+          <span class="dato-lbl">Especialidad</span>
+          <span class="dato-val">Programación</span>
+        </div>
+        <div class="dato-field">
+          <span class="dato-lbl">Institución</span>
+          <span class="dato-val">CETIS / CBTIS</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copy">
+      © 2026 Clínica Dental Sonrisa Perfecta · Gonzalez Ginez Andres Gael · No. Control 24308051280847
+    </div>
+  </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════
+     JAVASCRIPT — Conexión con MongoDB vía api/index.php
+════════════════════════════════════════════ -->
+<script>
+  // ── Colectores de datos por colección ────────────────────
+  function datosPaciente() {
+    return {
+      "ID_paciente": v('pac-id'),
+      "Nombre":      v('pac-nombre'),
+      "Apellido":    v('pac-apellido'),
+      "Alergias":    v('pac-alergias'),
+      "Telefono":    v('pac-tel'),
+      "Direccion":   v('pac-dir'),
+    };
+  }
+  function datosEmpleado() {
+    return {
+      "Nombre":          v('emp-nombre'),
+      "Apellido":        v('emp-apellido'),
+      "Numero tel":      v('emp-tel'),
+      "Direccion":       v('emp-dir'),
+      "RFC":             v('emp-rfc'),
+      "Nivel educativo": v('emp-nivel'),
+    };
+  }
+  function datosPago() {
+    return {
+      "Folio de pago":     parseInt(v('pago-folio')) || 0,
+      "ID-paciente":       v('pago-idpac'),
+      "Fecha de pago":     v('pago-fecha'),
+      "Estado del pago":   v('pago-estado'),
+      "Nombre del cliente":v('pago-cliente'),
+    };
+  }
+  function datosCita() {
+    return {
+      "ID-cita":      v('cit-id'),
+      "ID-Paciente":  v('cit-pac'),
+      "ID-Dentista":  v('cit-doc'),
+      "Tipo de cita": v('cit-tipo'),
+    };
+  }
+  function datosTratamiento() {
+    return {
+      "ID-tratamiento": v('trat-id'),
+      "servicio":       v('trat-serv'),
+      "Descripcion":    v('trat-desc'),
+      "ID-paciente":    v('trat-pac'),
+    };
+  }
+  function datosHistorial() {
+    return {
+      "ID-Historia":  v('his-id'),
+      "ID-paciente":  v('his-pac'),
+      "Diagnostico":  v('his-diag'),
+      "observaciones":v('his-obs'),
+    };
+  }
+
+  // ── Helpers ──────────────────────────────────────────────
+  function v(id) {
+    const el = document.getElementById(id);
+    return el ? el.value.trim() : '';
+  }
+
+  function mostrarMsg(col, tipo, texto) {
+    const el = document.getElementById('msg-' + col);
+    if (!el) return;
+    el.className = 'msg ' + tipo;
+    el.textContent = texto;
+    el.style.display = 'block';
+    setTimeout(() => { el.style.display = 'none'; }, 4000);
+  }
+
+  // ── FORM "Agendar Cita" — guarda en colección 'citas' ────
+  async function enviarCita(form) {
+    const datos = {
+      "Nombre":    form.nombre.value.trim(),
+      "Telefono":  form.telefono.value.trim(),
+      "Servicio":  form.servicio.value,
+      "Fecha":     form.fecha.value,
+      "Motivo":    form.motivo.value.trim(),
+      "origen":    "formulario-web",
+    };
+    const msgEl = document.getElementById('msg-cita-form');
+    msgEl.className = 'msg campo full';
+    msgEl.textContent = '';
+
+    try {
+      const res  = await fetch('api/index.php?col=citas&accion=insertar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+      const json = await res.json();
+      if (res.ok && json.insertedId) {
+        msgEl.className = 'msg ok campo full';
+        msgEl.textContent = '✅ Solicitud enviada. Te contactaremos pronto.';
+        msgEl.style.display = 'block';
+        form.reset();
+      } else {
+        msgEl.className = 'msg err campo full';
+        msgEl.textContent = '❌ Error: ' + (json.error || 'Respuesta inesperada');
+        msgEl.style.display = 'block';
+      }
+    } catch (err) {
+      msgEl.className = 'msg err campo full';
+      msgEl.textContent = '❌ No se pudo conectar con el servidor PHP.';
+      msgEl.style.display = 'block';
+    }
+    setTimeout(() => { msgEl.style.display = 'none'; }, 5000);
+  }
+
+  // ── INSERTAR documento ───────────────────────────────────
+  async function insertar(col, datosFunc) {
+    const datos = datosFunc();
+    const valores = Object.values(datos).filter(x => x !== '' && x !== 0);
+    if (valores.length === 0) {
+      mostrarMsg(col, 'err', '⚠️ Completa al menos un campo antes de guardar.');
+      return;
+    }
+    try {
+      const res = await fetch(`api/index.php?col=${col}&accion=insertar`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(datos),
+      });
+      const json = await res.json();
+      if (res.ok && json.insertedId) {
+        mostrarMsg(col, 'ok', `✅ Documento guardado. ID: ${json.insertedId}`);
+        // Refrescar lista si ya estaba abierta
+        const listaId = 'lista-' + col.replace('_', '-');
+        const lista = document.getElementById(listaId);
+        if (lista && lista.children.length > 0) {
+          verDocumentos(col, listaId);
+        }
+      } else {
+        mostrarMsg(col, 'err', '❌ Error: ' + (json.error || 'Respuesta inesperada'));
+      }
+    } catch (err) {
+      mostrarMsg(col, 'err', '❌ No se pudo conectar con el servidor PHP.');
+      console.error(err);
+    }
+  }
+
+  // ── VER documentos ───────────────────────────────────────
+  async function verDocumentos(col, listaId) {
+    const lista = document.getElementById(listaId);
+    if (!lista) return;
+    lista.innerHTML = '<span class="spinner"></span> Cargando…';
+    try {
+      const res  = await fetch(`api/index.php?col=${col}&accion=listar`);
+      const json = await res.json();
+      if (!res.ok) {
+        lista.innerHTML = `<p style="color:#f5a5a5">❌ ${json.error || 'Error al cargar'}</p>`;
+        return;
+      }
+      const docs = json.documentos || [];
+      if (docs.length === 0) {
+        lista.innerHTML = '<p style="color:var(--gris);font-size:.85rem;">Sin documentos aún.</p>';
+        return;
+      }
+      lista.innerHTML = '';
+      docs.forEach(doc => {
+        const card = document.createElement('div');
+        card.className = 'doc-card';
+        let contenido = '';
+        for (const [k, val] of Object.entries(doc)) {
+          if (k === '_id') continue;
+          contenido += `<span class="doc-key">${k}:</span> <span class="doc-val">${val}</span>&nbsp;&nbsp;`;
+        }
+        card.innerHTML = contenido;
+        lista.appendChild(card);
+      });
+    } catch (err) {
+      lista.innerHTML = '<p style="color:#f5a5a5">❌ No se pudo conectar con el servidor.</p>';
+      console.error(err);
+    }
+  }
+
+  // ── Nav activo según scroll ──────────────────────────────
+  const navLinks = document.querySelectorAll('nav a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    document.querySelectorAll('section').forEach(sec => {
+      if (window.scrollY >= sec.offsetTop - 80) current = sec.id;
+    });
+    navLinks.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  });
+
+  // ── Cargar colección en visualizador ────────────────────
+  function cargarColeccion() {
+    const col = document.getElementById('col-selector').value;
+    const contenedor = document.getElementById('resultado-visualizador');
+    contenedor.innerHTML = '<span class="spinner"></span> Cargando…';
+
+    fetch('api/index.php?col=' + col + '&accion=listar')
+      .then(res => res.json())
+      .then(json => {
+        const docs = json.documentos || [];
+        if (docs.length === 0) {
+          contenedor.innerHTML = '<p>Sin documentos en esta colección.</p>';
+          return;
+        }
+        const claves = Object.keys(docs[0]).filter(k => k !== '_id');
+        let html = '<table><tr>';
+        claves.forEach(k => { html += '<th>' + k + '</th>'; });
+        html += '</tr>';
+        docs.forEach(doc => {
+          html += '<tr>';
+          claves.forEach(k => { html += '<td>' + (doc[k] ?? '') + '</td>'; });
+          html += '</tr>';
+        });
+        html += '</table>';
+        html += '<p>Total: ' + docs.length + ' registros</p>';
+        contenedor.innerHTML = html;
+      })
+      .catch(() => {
+        contenedor.innerHTML = '<p style="color:#f5a5a5">❌ Error al conectar con el servidor.</p>';
+      });
+  }
+</script>
+
+</body>
+</html>
